@@ -1,23 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Question from './component/Question';
+import QuestionNav from './component/QuestionNav';
+import Score from './component/Score';
+import { questionsData } from './data/questions';
 
 function App() {
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [score, setScore] = useState(0);
+  const [showScore, setShowScore] = useState(false);
+  const [start, setStart] = useState(false);
+
+  const handleAnswer = (answerIndex) => {
+    if (answerIndex === questionsData[currentQuestion].correct) {
+      setScore(score + 1);
+    }
+  };
+
+  const handleNextQuestion = () => {
+    const nextQuestion = currentQuestion + 1;
+    if (nextQuestion < questionsData.length) {
+      setCurrentQuestion(nextQuestion);
+    } else {
+      setShowScore(true);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {showScore ? (
+        <Score score={score} total={questionsData.length} />
+      ) : (
+        <>
+          <Question
+            question={questionsData[currentQuestion].question}
+            options={questionsData[currentQuestion].options}
+            onAnswer={handleAnswer}
+          />
+          <QuestionNav onNext={handleNextQuestion} />
+        </>
+      )}
     </div>
   );
 }
