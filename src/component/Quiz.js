@@ -9,7 +9,7 @@ function Quiz({ onRestart }) {
     const [score, setScore] = useState(0);
     const [showScore, setShowScore] = useState(false);
     const [loading, setLoading] = useState(true);
-    const [selectedOption, setSelectedOption] = useState(null); // New state to track selected option
+    const [selectedOption, setSelectedOption] = useState(null);
 
     useEffect(() => {
         fetchQuestions();
@@ -35,14 +35,14 @@ function Quiz({ onRestart }) {
     };
 
     const handleAnswer = (answerIndex) => {
-        setSelectedOption(answerIndex); // Set the selected option
+        setSelectedOption(answerIndex);
         if (answerIndex === questions[currentQuestion].correct) {
             setScore(score + 1);
         }
     };
 
     const handleNextQuestion = () => {
-        setSelectedOption(null); // Reset selected option for the next question
+        setSelectedOption(null);
         const nextQuestion = currentQuestion + 1;
         if (nextQuestion < questions.length) {
             setCurrentQuestion(nextQuestion);
@@ -56,9 +56,9 @@ function Quiz({ onRestart }) {
         setCurrentQuestion(0);
         setShowScore(false);
         setLoading(true);
-        setSelectedOption(null); // Reset selected option
+        setSelectedOption(null);
         fetchQuestions();
-        onRestart(); // Reset to initial screen
+        onRestart();
     };
 
     if (loading) {
@@ -78,7 +78,7 @@ function Quiz({ onRestart }) {
                         question={questions[currentQuestion].question}
                         options={questions[currentQuestion].options}
                         onAnswer={handleAnswer}
-                        selectedOption={selectedOption} // Pass the selected option state
+                        selectedOption={selectedOption}
                     />
                     <QuestionNav onNext={handleNextQuestion} />
                 </div>
