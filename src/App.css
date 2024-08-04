@@ -1,38 +1,99 @@
-.App {
+.start-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f0f0f0;
+}
+
+.start-quiz {
   text-align: center;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.start-quiz h1 {
+  font-size: 40px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button {
+  padding: 20px 40px;
+  font-weight: bold;
+  background-color: lightskyblue;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+button:hover {
+  background-color: rgb(198, 233, 255);
+}
+
+.question-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.options {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 30px;
+}
+
+
+.score-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 20px;
+  margin-bottom: 20px;
+
+}
+
+.score-container h2 {
+  margin: 0;
+}
+
+.score-container p {
+  margin: 0;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.option-button {
+  padding: 20px;
+  font-weight: bold;
+  background-color: wheat;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.option-button:hover {
+  background-color: rgb(255, 239, 209);
+}
+
+.option-button.selected {
+  background-color: #007bff;
   color: white;
+  border-color: black;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.mcq-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

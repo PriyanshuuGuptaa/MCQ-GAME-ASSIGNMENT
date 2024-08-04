@@ -2,7 +2,7 @@ import React from 'react';
 
 function QuestionNav({ onNext }) {
     return (
-        <div>
+        <div >
             <button onClick={onNext}>Next Question</button>
         </div>
     );
